@@ -1,0 +1,17 @@
+.dark-text{
+    color : white;
+}
+
+.dark-btn{
+    color : white;
+    background : grey;
+    border : 1px solid black;
+    border-radius : 5px;
+}
+
+.dark-input{
+    color : white;
+    background : grey;
+    border : 1px solid black;
+    border-radius : 5px;
+}

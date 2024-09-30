@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { DarkModeContext } from "../DarkModeContext";
 
-const Form = ({todos , setTodos ,setCounter}) => {
+const Form = ({addTodo , setCounter}) => {
     const [ todo , setTodo ] = useState("");
     const [ count , setCount ] = useState(0);
+
+    const {darkMode} = useContext(DarkModeContext);
 
     function handleSubmit(e){
 	e.preventDefault();
@@ -10,7 +13,7 @@ const Form = ({todos , setTodos ,setCounter}) => {
 	    alert("Name is required");
 	    return;
 	}
-	setTodos([...todos , todo]);
+	addTodo(todo);
 	setTodo("");
     }
 
@@ -32,13 +35,20 @@ const Form = ({todos , setTodos ,setCounter}) => {
 
     return (
 	<form>
-	    <input value={todo} onChange={handleChange} placeholder="Enter Todo"/>
+	    <input value={todo} onChange={handleChange} placeholder="Enter Todo"
+		className={darkMode ? "dark-input" : ""}
+	    />
 	    <button type="submit" id="submitTodo"
+		className={darkMode ? "dark-btn" : ""}
 		onClick={handleSubmit}
 	    > Add Todo </button>
 	    <br/>
-	    <input placeholder="Enter Countdown" onChange={handleCounterChange}/>
-	    <button onClick={handleCounterUpdate}>Update</button>
+	    <input placeholder="Enter Countdown" onChange={handleCounterChange}
+		className={darkMode ? "dark-input" : ""}
+	    />
+	    <button onClick={handleCounterUpdate}
+		className={darkMode ? "dark-btn" : ""}
+	    >Update</button>
 	</form>
     )
 }
